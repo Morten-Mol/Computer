@@ -1,13 +1,21 @@
-from Transistor import Transistor
+import matplotlib.pyplot as plt
+from binaryRNG import RNG
+import numpy as np
 
-t1 = Transistor(0,0)
+def RNGtest():
+    numbers = []
+    bits = 8
+    for x in range(1000):
+        numbers.append(RNG(bits))
 
-print(t1.drain)
 
-t1.Source(1) 
+    plt.figure(1)
+    plt.hist(numbers,bins=range(min(numbers),max(numbers)+10,10))
+    plt.grid(True)
+    #plt.show()
 
-print(t1.drain)
+    print(numbers.count(0),numbers.count(255))
 
-t1.Gate(1)
-
-print(t1.drain)
+#Something is wrong with the amount of 0 values compared to 255 values
+#It should be just as likely to get 0 as 255 (0 is all 8 bits being 0 and 255 is all 8 bits being 1)
+RNGtest()

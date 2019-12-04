@@ -10,7 +10,6 @@ def RNG(numberOfBits):
 
     rng = 0
     for i,bit in enumerate(bunch):
-        if bit.drain == 1:
-            rng += 2**i
+        rng += bit.drain * 2**i
 
     return rng

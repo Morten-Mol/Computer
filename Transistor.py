@@ -12,12 +12,10 @@ class Transistor:
     def Source(self,source):
         self.source = source
         self.drain = self.Output()
-        print('source updated')
 
     def Gate(self,gate):
         self.gate = gate
         self.drain = self.Output()
-        print('gate updated')
 
     ### Check output
     def Output(self):
@@ -25,6 +23,3 @@ class Transistor:
             return 1
         else:
             return 0
-
-    ### Compare source and gate to create drain val
-    #self.drain = 1 
