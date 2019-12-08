@@ -10,5 +10,5 @@ class Gate:
     # An AND-gate can simply be modelled as an transistor
     def AND(self):
         t1 = Transistor(1,self.iTop)
-        t2 = Transistor(t1.drain,1)
+        t2 = Transistor(t1.drain,self.iBot)
         return t2.drain
