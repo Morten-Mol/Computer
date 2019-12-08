@@ -1,10 +1,12 @@
-class Gate:
-    def __init__(self,iTop,iBot,Out):
-        self.iTop = 0
-        self.iBot = 0
-        self.Out = 0
+from Transistor import Transistor
 
-    def AND(self,iTop,iBot,Out):
+class Gate:
+    # Any logic gate has a top-most input and a bottom-most input
+    # The output is then the result of the logic operation
+    def __init__(self,iTop,iBot):
         self.iTop = iTop
         self.iBot = iBot
-        self.Out = 
+
+    # An AND-gate can simply be modelled as an transistor
+    def AND(self):
+        return Transistor(self.iTop,self.iBot).drain
