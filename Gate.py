@@ -22,3 +22,18 @@ class Gate:
         t1_OR = Transistor(1,self.iTop)
         t2_OR = Transistor(1,self.iBot)
         return max((t1_OR.drain,t2_OR.drain))
+
+    # Inverter - Called with only 1 input i.e Gate(input,_)
+    def NOT(self):
+        t1_NOT = Transistor(1,self.iTop)
+        # Simulate the situation where
+        # the Input current of the ciruit
+        # goes directly to output if 
+        # t1_NOT is closed
+        if t1_NOT.drain == 0:
+            return 1
+        else:
+            # Power flows through t1_NOT
+            # and does not stop before going through transister
+            # See : //www.electronics-tutorials.ws/logic/logic_4.htmlass
+            return 0
