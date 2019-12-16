@@ -37,3 +37,20 @@ class Gate:
             # and does not stop before going through transister
             # See : //www.electronics-tutorials.ws/logic/logic_4.htmlass
             return 0
+
+    def NOR(self):
+
+        def input_flow():
+        # Simulate wire going to gate of transistor in logic gate
+        # See http://hyperphysics.phy-astr.gsu.edu/hbase/Electronic/trangate.html#c5
+             if self.iTop or self.iBot:
+                return 1
+             else:
+                 return 0
+
+        t1_NOR = Transistor(1,input_flow())
+
+        if t1_NOR.drain == 0:
+            return 1
+        else:
+            return 0
