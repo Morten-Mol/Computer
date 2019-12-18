@@ -54,3 +54,19 @@ class Gate:
             return 1
         else:
             return 0
+
+    def NAND(self):
+
+        # Simulating wire flow around transisters
+        # Start with output = 1
+        output = 1
+
+        # Define transistors for gate
+        t1_NAND = Transistor(1,self.iTop)
+        t2_NAND = Transistor(t1_NAND.drain,self.iBot)
+
+        if t2_NAND.drain == 1:
+            output = 0
+
+        return output
+
