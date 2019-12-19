@@ -1,6 +1,6 @@
 from Transistor import Transistor
 
-class TransGate:
+class Gate:
     # Class for logic gates that only use transistors to function
 
     # Any logic gate has a top-most input and a bottom-most input
@@ -25,7 +25,6 @@ class TransGate:
         t2_AND = Transistor(t1_AND.drain,self.iBot)
 
         return t2_AND.drain
-        #self.output = t2_AND.drain
 
     # OR-gate made out of 2 transistors. The drain from both are
     # compared and 1 is parsed as the output if any one of them
@@ -35,7 +34,6 @@ class TransGate:
         t2_OR = Transistor(1,self.iBot)
 
         return max((t1_OR.drain,t2_OR.drain))
-        #self.output = max((t1_OR.drain,t2_OR.drain))
 
     # Inverter - Called with only 1 input i.e Gate(input,_)
     def NOT(self):
@@ -46,13 +44,11 @@ class TransGate:
         # t1_NOT is closed
         if t1_NOT.drain == 0:
             return 1
-            #self.output =  1
         else:
             # Power flows through t1_NOT
             # and does not stop before going through transister
             # See : //www.electronics-tutorials.ws/logic/logic_4.htmlass
             return 0
-            #self.output = 0
 
     def NOR(self):
 
@@ -67,11 +63,9 @@ class TransGate:
         t1_NOR = Transistor(1,input_flow())
 
         if t1_NOR.drain == 0:
-            #self.output = 1
             return 1
         else:
             return 0
-            #self.output = 0
 
     def NAND(self):
 
@@ -87,42 +81,20 @@ class TransGate:
             NAND_output = 0
 
         return NAND_output
-        #self.output = NAND_output
-
-class SumGate:
-    # Logic gates that use multiple transistor level gates to function
-
-    def __init__(self,iTop,iBot):
-        self.iTop = iTop
-        self.iBot = iBot
 
     def XOR(self):
         # XOR gate using 2 AND gates with single inverted inputs and 1 OR gate
         # See https://www.cs.bu.edu/~best/courses/modules/Transistors2Gates/
 
-        # NOT operation on bottom input of two AND gates
-        #NOT_1 = TransGate(self.iBot)
-        #NOT_1.NOT()
-        #NOT_2 = TransGate(self.iTop)
-        #NOT_2.NOT()
-
-        #AND_1 = TransGate(self.iTop, NOT_1.output)
-        #AND_1.AND()
-        #AND_2 = TransGate(NOT_2.output, self.iBot)
-        #AND_2.AND()
-
-        AND_1 = TransGate(self.iTop, TransGate(self.iBot).NOT()).AND()
-        AND_2 = TransGate(TransGate(self.iTop).NOT(), self.iBot).AND()
+        # NOT operation on one of the AND gate inputs
+        AND_1 = Gate(self.iTop, Gate(self.iBot).NOT()).AND()
+        AND_2 = Gate(Gate(self.iTop).NOT(), self.iBot).AND()
 
         # Use output of both ANDs for input of OR
-        #OR_1 = TransGate(AND_1.output, AND_2.output)
-        #OR_1.OR()
-
-        #return OR_1.output
-        return TransGate(AND_1,AND_2).OR()
+        return Gate(AND_1,AND_2).OR()
 
 # Quick tests
 if __name__ == '__main__':
-    a = SumGate(1,0).XOR()
-    b = TransGate(0,0).NOR()
+    a = Gate(1,0).XOR()
+    b = Gate(0,0).NOR()
     print(a,b)
