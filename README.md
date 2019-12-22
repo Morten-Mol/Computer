@@ -17,10 +17,18 @@ Transistor.Source(source)
 Transistor.Gate(gate)
 ```
 
+##### Gate
+Class for applying any logic gate to two inputs. Basic usage is as below,
+```python
+Gate(topInput,bottomInput).LOGICOPERATION
+```
+where LOGICOPERATION can be AND,OR,NOT,NAND,NOR,XOR,XNOR. The value returned by the class method is the logic operation return value.
+
 ### Tests 
 Run Tests.py to test and demonstrate the different features of the repository
 + Transistor based RNG
++ Logic gate truth tables for all common logic operations
 
 ### To do:
-1. Logic gates
-2. Circuits
+1. Circuits
+2. n>2 Logic Gates
