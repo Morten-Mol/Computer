@@ -41,5 +41,10 @@ def TestGateTruth(gateType):
             output = TGate.XOR()
             print('Input: %d, %d | Output: %d' % (i[0],i[1],output))
 
+        if gateType == 'XNOR':
+            output = TGate.XNOR()
+            print('Input: %d, %d | Output: %d' % (i[0],i[1],output))
+
     # Spacer for next TestGateTruth call in Tests.py
     print('')
+

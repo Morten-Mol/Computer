@@ -93,8 +93,21 @@ class Gate:
         # Use output of both ANDs for input of OR
         return Gate(AND_1,AND_2).OR()
 
+    def XNOR(self):
+        # XNOR uses 5 NAND gates. See https://en.wikipedia.org/wiki/XNOR_gate
+        NAND_1 = Gate(self.iTop,self.iBot).NAND()
+
+        NAND_2_1 = Gate(self.iTop,NAND_1).NAND()
+        NAND_2_2 = Gate(NAND_1,self.iBot).NAND()
+
+        NAND_3 = Gate(NAND_2_1,NAND_2_2).NAND()
+
+        NAND_4 = Gate(NAND_3,NAND_3).NAND()
+
+        return NAND_4
+
 # Quick tests
 if __name__ == '__main__':
     a = Gate(1,0).XOR()
-    b = Gate(0,0).NOR()
+    b = Gate(0,1).XNOR()
     print(a,b)
