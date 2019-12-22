@@ -20,7 +20,7 @@ Transistor.Gate(gate)
 ##### Gate
 Class for applying any logic gate to two inputs. Basic usage is as below,
 ```python
-Gate(topInput,bottomInput).LOGICOPERATION
+Gate(topInput,bottomInput).LOGICOPERATION()
 ```
 where LOGICOPERATION can be AND,OR,NOT,NAND,NOR,XOR,XNOR. The value returned by the class method is the logic operation return value.
 
