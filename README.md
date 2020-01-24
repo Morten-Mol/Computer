@@ -30,5 +30,6 @@ Run Tests.py to test and demonstrate the different features of the repository
 + Logic gate truth tables for all common logic operations
 
 ### To do:
-1. n>2 Logic Gates
-2. Instruction set sim
+1. x-bit binary Adder-Subtractor : see https://www.geeksforgeeks.org/4-bit-binary-adder-subtractor/
+2. n>2 Logic Gates
+3. Instruction set sim
