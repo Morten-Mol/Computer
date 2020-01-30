@@ -43,7 +43,7 @@ def AddSub(Binary_A, Binary_B, operation):
 if __name__ == "__main__" :
     binA = [0,1,0]
     binB = [0,1,1]
-    operation = 'sub'
+    operation = 'sub' #### THIS DOES NOT WORK, ONLY ADD WORKS AS INTENDED
 
     ans,signedBit= AddSub(binA,binB,operation)
     print(ans)
