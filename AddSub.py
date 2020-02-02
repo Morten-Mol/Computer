@@ -1,4 +1,7 @@
 from AddSubSingle import SingleBitAddSub
+from Bin2Dec import Bin2Dec
+from TwosComp import TwosComp
+from BinList2TransList import Bin2Trans
 
 def AddSub(Binary_A, Binary_B, operation):
 
@@ -38,13 +41,21 @@ def AddSub(Binary_A, Binary_B, operation):
 
         pos += 1
 
-    return sumList,cOut
+    sumList.insert(0,cOut)
+    ans = sumList
+
+    if operation == 'sub' or operation=='Sub':
+        ans = TwosComp(ans)
+
+    return ans
 
 if __name__ == "__main__" :
     binA = [0,1,0]
     binB = [0,1,1]
-    operation = 'sub' #### THIS DOES NOT WORK, ONLY ADD WORKS AS INTENDED
+    operation = 'sub'
 
-    ans,signedBit= AddSub(binA,binB,operation)
+    ans = AddSub(binA,binB,operation)
+    ans = Bin2Dec(ans)
+
     print(ans)
-    print(signedBit)
+
