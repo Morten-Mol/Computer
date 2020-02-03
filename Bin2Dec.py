@@ -10,9 +10,12 @@ def Bin2Dec(binBunch):
     binBunch.reverse()
 
     for i,bit in enumerate(binBunch):
-       if i == len(binBunch)-1:
+       if i == len(binBunch)-1 and bit.drain == 1:
            # Take care of signed bit
            dec = dec * (-1)
+       elif i == len(binBunch)-1 and bit.drain == 0:
+           # Signed-bit is 0, do nothing
+           pass
        else:
            # Do a normal bit conversion
            dec += bit.drain * 2**i

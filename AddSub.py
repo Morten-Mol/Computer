@@ -1,10 +1,32 @@
-from AddSubSingle import SingleBitAddSub
 from Bin2Dec import Bin2Dec
 from TwosComp import TwosComp
 from BinList2TransList import Bin2Trans
+from FullAdder import FullAdder
+from Gate import Gate
+
+
+class SingleBitAddSub:
+    # Based on https://www.geeksforgeeks.org/4-bit-binary-adder-subtractor/
+
+    def __init__(self, K, cIn, A, B):
+        self.AddOrSub = K
+        self.cIN = cIn
+        self.A = A
+        self.B = B
+
+        # Prepare B input depending on addition or subtraction
+        self.b_compliment = Gate(self.AddOrSub, self.B).XOR()
+
+        # Full-adder
+        self.sum, self.cOut = FullAdder(self.A, self.b_compliment, self.cIN).Output()
 
 def AddSub(Binary_A, Binary_B, operation):
+    """
+    Adds or subs two binary numbers of equal bit-length
 
+    The function uses a series of full adders and twos compliment to do an
+    arithmetic like bit-wise operation
+    """
     # Addition or subtraction
     if operation is 'Add' or operation is 'add':
         K = 0
@@ -41,9 +63,12 @@ def AddSub(Binary_A, Binary_B, operation):
 
         pos += 1
 
+    # Insert the signed bit into the result to get the final answer
     sumList.insert(0,cOut)
     ans = sumList
 
+    # Takes twos compliment of answer if operation was subtraction
+    # This is done to bring it back to normal form
     if operation == 'sub' or operation=='Sub':
         ans = TwosComp(ans)
 
@@ -55,6 +80,7 @@ if __name__ == "__main__" :
     operation = 'sub'
 
     ans = AddSub(binA,binB,operation)
+    print(ans)
     ans = Bin2Dec(ans)
 
     print(ans)
