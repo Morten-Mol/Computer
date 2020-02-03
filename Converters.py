@@ -1,5 +1,14 @@
 from Transistor import Transistor
-from BinList2TransList import Bin2Trans
+
+def Bin2Trans(binList):
+    transList = []
+    for binary in binList:
+        if binary == 1:
+            transList.append(Transistor(1,1))
+        else:
+            transList.append(Transistor(0,0))
+
+    return transList
 
 def Bin2Dec(binBunch):
     binBunch = Bin2Trans(binBunch)
@@ -21,6 +30,7 @@ def Bin2Dec(binBunch):
            dec += bit.drain * 2**i
 
     return dec
+
 if __name__ == '__main__':
     A = [1,0,1,0]
     print(Bin2Dec(A))
