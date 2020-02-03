@@ -24,12 +24,17 @@ Gate(topInput,bottomInput).LOGICOPERATION()
 ```
 where LOGICOPERATION can be AND,OR,NOT,NAND,NOR,XOR,XNOR. The value returned by the class method is the logic operation return value.
 
+### Binary numbers
+All binary numbers inside the machine is to be respresented by a series of `Transistor`-objects.
+
+The user may input a decimal number of binary number, but this will get converted to a list of `Transistor` objects before being used in the program
+
 ### Tests 
 Run Tests.py to test and demonstrate the different features of the repository
 + Transistor based RNG
 + Logic gate truth tables for all common logic operations
 
 ### To do:
-1. x-bit binary Adder-Subtractor : see https://www.geeksforgeeks.org/4-bit-binary-adder-subtractor/
+1. Decimal to binary converter in Converters.py
 2. n>2 Logic Gates
 3. Instruction set sim
